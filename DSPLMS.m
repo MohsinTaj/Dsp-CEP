@@ -1,7 +1,7 @@
 clc;
 clear ;
 close all;
-[voice,Fs] = audioread('Recording.mp3');
+[voice,Fs] = audioread('Recording.m4a');
 disp("Original Voice")
 sound(voice,Fs)
 disp("5 sec pause")
@@ -9,7 +9,6 @@ pause(5)
 order = 2;
 size = 2;
 N = Fs;
-
 subplot(4,1,1);
 plot(voice);
 title('voice')
@@ -22,11 +21,11 @@ pause(5)
 subplot(4,1,2)
 plot(primary)
 title('voice + noise')
-ref = noise+.25*rand;
+reference = noise; 
 subplot(4,1,3)
-plot(ref)
-title('referance (noisy noise)')
- mu=0.009;
+plot(noise)
+title('noise')
+ mu=0.006;
  n=length(primary);
  delayed=zeros(1,order);
  adap=zeros(1,order);
